@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual para comenzar en HTML Basico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+        }
+        .encabezado {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background: linear-gradient(90deg, #232526 0%, #414345 100%);
+            color: #fff;
+            padding: 20px 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            transition: background 0.5s;
+        }
+        .encabezado select, .encabezado button {
+            margin-left: 20px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+            color: #232526;
+            cursor: pointer;
+            transition: box-shadow 0.3s, background 0.3s;
+        }
+        .encabezado select:focus, .encabezado button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #ffd200;
+        }
+        .pestaña {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            margin: 0 auto 30px auto;
+            max-width: 700px;
+            min-height: 350px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+            padding: 40px 32px;
+            animation: fadeIn 0.7s;
+            position: relative;
+        }
+        .contenido-web {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            margin: 0 auto 30px auto;
+            max-width: 700px;
+            min-height: 350px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+            padding: 40px 32px;
+            animation: fadeIn 0.7s;
+            position: relative;
+            align-items: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .recuadro {
+            background: linear-gradient(100deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            margin-bottom: 28px;
+            padding: 24px 20px;
+            transition: box-shadow 0.3s;
+        }
+        .recuadro h2 {
+            margin-top: 0;
+            color: #232526;
+            text-align: center;
+        }
+        .recuadro button {
+            margin-top: 12px;
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+            transition: background 0.3s;
+        }
+        .recuadro button:hover {
+            background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+        }
+        /* Clase separator para separar visualmente secciones */
+        .separator {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ffd200 0%, #43cea2 100%);
+            border: none;
+            margin: 28px 0;
+            border-radius: 2px;
+        }
+        @media (max-width: 800px) {
+            .pestaña {
+                padding: 20px 8px;
+                max-width: 98vw;
+            }
+            .encabezado {
+                flex-direction: column;
+                align-items: flex-end;
+                padding: 12px 8px;
+            }
+        }
+        /* Centramos todos los h1 y h2 */
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado superior -->
+    <div class="encabezado" id="encabezado-superior">
+        <label for="modulo-select" style="margin-right:10px;">Selecciona un módulo:</label>
+        <select id="modulo-select" onchange="cambiarModulo(this)">
+            <option value="">¿CUAL MODULO?</option>
+            <option value="modulo1">MODULO 1 📄</option>
+            <option value="modulo2">MODULO 2 📄</option>
+            <option value="modulo3">MODULO 3 📄</option>
+            <option value="modulo4">MODULO 4 📄</option>
+            <option value="modulo5">MODULO 5 📄</option>
+        </select>
+    </div>
 
+    <!-- Pestañas -->
+    <div id="inicio" class="pestaña container" style="display:block;">
+        <h1>Manual para comenzar en HTML Basico</h1>
+        <div class="recuadro">
+            <h2>INTRODUCCION</h2>
+            <p>Antes de comenzar con el manual, te vamos a meter en contexto, asi tienes claro que vas a encontrar aqui...</p>
+            <button onclick="mostrarPestaña('intro')">Visitar la introduccion</button>
+        </div>
+        <div class="recuadro">
+            <h2>MODULO 1 📄</h2>
+            <p>Si ya visitaste la introduccion que era opcional. Ya podemos comenzar con el Modulo 1!!!</p>
+            <button onclick="mostrarPestaña('modulo1')">MODULO 1</button>
+        </div>
+    </div>
+    <div id="intro" class="pestaña container" style="display:none;">
+        <!-- El contenido se cargará dinámicamente -->
+        <div id="contenido-intro"></div>
+    </div>
+    <div id="modulo1" class="pestaña container" style="display:none;">
+        <div id="contenido-modulo1"></div>
+    </div>
+    <div id="modulo2" class="pestaña container" style="display:none;">
+        <div id="contenido-modulo2"></div>
+    </div>
+    <div id="modulo3" class="pestaña container" style="display:none;">
+        <div id="contenido-modulo3"></div>
+    </div>
+    <div id="modulo4" class="pestaña container" style="display:none;">
+        <div id="contenido-modulo4"></div>
+    </div>
+    <div id="modulo5" class="pestaña container" style="display:none;">
+        <div id="contenido-modulo5"></div>
+    </div>
+
+    <!-- Encabezado inferior -->
+    <div class="encabezado" id="encabezado-inferior" style="margin-top:30px;">
+        <button onclick="mostrarPestaña('inicio')">Volver al inicio</button>
+    </div>
+
+    <script>
+        // Cambia la pestaña según el select del encabezado superior
+        function cambiarModulo(select) {
+            if (select.value) {
+                mostrarPestaña(select.value);
+            }
+        }
+
+        // Oculta todas las pestañas y muestra la seleccionada
+        function mostrarPestaña(id) {
+            document.querySelectorAll('.container').forEach(div => {
+                div.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+
+            // Si es un módulo o la introducción, cargar el contenido externo solo una vez
+            if (id.startsWith('modulo') || id === 'intro') {
+                cargarModulo(id);
+                // Actualiza el select si se navega desde botones
+                document.getElementById('modulo-select').value = id.startsWith('modulo') ? id : '';
+            } else {
+                document.getElementById('modulo-select').value = '';
+            }
+        }
+
+        // Carga el contenido de los módulos externos solo una vez
+        const modulosCargados = {};
+        function cargarModulo(id) {
+            if (modulosCargados[id]) return;
+            const urls = {
+                intro: 'https://abelcraftok.github.io/manual-HTML/intro.html',
+                modulo1: 'https://abelcraftok.github.io/manual-HTML/modulo1.html',
+                modulo2: 'https://abelcraftok.github.io/manual-HTML/modulo2.html',
+                modulo3: 'https://abelcraftok.github.io/manual-HTML/modulo3.html',
+                modulo4: 'https://abelcraftok.github.io/manual-HTML/modulo4.html',
+                modulo5: 'https://abelcraftok.github.io/manual-HTML/modulo5.html'
+            };
+            const contenedor = document.getElementById('contenido-' + id);
+            if (urls[id] && contenedor) {
+                fetch(urls[id])
+                    .then(resp => resp.text())
+                    .then(html => {
+                        contenedor.innerHTML = html;
+                        modulosCargados[id] = true;
+                    })
+                    .catch(() => {
+                        contenedor.innerHTML = "<h2 style='color:red; font-weight: bold;'>No se pudo cargar el contenido del módulo.</h2>";
+                    });
+            }
+        }
+    </script>
+</body>
+</html>
